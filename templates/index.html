@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link href="styles.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container content">
+
+ 
+   <div class="text-center" style="background-color: rgb(158, 130, 94); padding: 6px; font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">
+    <h1>Mission to Mars</h1>
+    <p><a class="btn btn-dark btn-lg" href="/scrape" role="button">Get Data!</a></p>
+  </div>
+  <div class="row">
+    <div class="col-md-10">
+      <h3 class="heading" style="color: rgb(160, 91, 12);">Latest Mars News</h3>
+      <h5 class="heading">{{ data.news_title }}</h5>
+      <small>{{ data.news_details }}</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-7">
+      <h3 class="heading">Featured Image of Mars</h3>
+      <img src={{data.image_url}}>        
+    </div>
+    <div class="col-md-5">
+      <h5 class="heading">Mars Facts</h5>  
+      {{ data.factsTable | safe}}      
+    </div>
+  </div>
+</div>
+
+  <div class="container text-center">
+    <h2>Mars Hemispheres</h2>        
+        <hr>
+        <div class="grey-bg container-fluid">
+          <div class="row">
+            {% for row in data.hemispheres %}           
+            <div class="col-xl-3 col-sm-6 col-12">
+              <div class="card" style="width: 18rem;">
+                <img src={{row.image_url}} class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h2>{{row.title}}</h2>
+                </div>
+              </div>    
+              
+            </div>
+            {% endfor %}                    
+                
+          </div>             
+          
+        </div>  <br>
+
+
+    
+  </div>
+ 
+</body>
+
+</html>
